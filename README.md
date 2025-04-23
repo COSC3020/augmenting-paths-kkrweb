@@ -42,7 +42,7 @@ Name: Kane Kriz
 
 Start Date: 21 April 2025
 
-Last Edited: 21 April 2025
+Last Edited: 22 April 2025
 
 Feedback Request 1 Date: X
 
@@ -50,8 +50,45 @@ Feedback Request 1 Date: X
 //
 
 
-Response: Incomplete
+Response: WIP
 
+First, we can examine the step by step functionality of the implementation and its work in parts.
+
+The implementation begins with an early check for the case where start and end nodes are identical. 
+
+This check requires constant time $Θ(1)$ to execute.
+
+The primary work occurs in the breath first traversal section where nodes are processed using the queue. 
+
+The implementation initializes three tracking structures: visitedNodes, parentMap, and nodeQueue, all requiring constant time to set up.
+
+The breath first search functionality processes each vertex once.
+
+This occurs when the vertex is when it is dequeued and the processed. 
+
+Using `visitedNodes` along with queue management makes it so that no vertex is processed more than one time. 
+
+This vertex processing contributes $Θ(V)$ work where V represents the number of vertices in the graph.
+
+For each vertex processed above, the implementation examines outgoing edges through iterating over the adjacency list contents. 
+
+The nested loop `for(var neighborNode in neighborNodes)` examines each edge exactly once when its source vertex is processed. 
+
+This edge examination contributes $Θ(E)$ work where E represents the number of edges in the graph.
+
+The check `neighborNodes[neighborNode] > 0` and the neighbor visit check both execute in constant time per edge, and thus do not affect the asymptotic complexity.
+
+When finding / creating a path, the worst case occurs when the path contains all vertices.
+
+The while loop processes at most V nodes.
+
+Each unshift operation costs a constant $Θ(1)$ work.
+
+This results in in $Θ(V)$ work for path construction.
+
+The worst case occurs when every vertex and every edge must be processed from the graph, before either finding the target node or determining no path is possible. 
+
+This results in an overall worst case theta complexity of $Θ(V + E)$ for the implementation.
 
 
 
